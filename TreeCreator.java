@@ -21,12 +21,24 @@ public class TreeCreator {
 		case "up": {
 			level += add(nOflevels - currentlevel - 1, " ");
 			level += add(2 * currentlevel + 1, sign);
+			
+			if (currentlevel + 1 != nOflevels) {
+				level += "\n";
+			}
+
+			
 			break;
 		}
 		
 		case "down": {
 			level += add(currentlevel, " ");
 			level += add(2*nOflevels-2 - (2*currentlevel-1), sign);
+			
+			if (currentlevel + 1 != nOflevels) {
+				level += "\n";
+			}
+
+			
 			break;
 		}
 
@@ -34,12 +46,17 @@ public class TreeCreator {
 			if(currentlevel<=nOflevels){
 				level += add(currentlevel, sign);
 				}
-				if(currentlevel==nOflevels-1)
+				if(currentlevel==nOflevels-1&&currentlevel!=0)
 					{
 					level+="\n";}
 			if(currentlevel>nOflevels){
 					level+= add(2*nOflevels-currentlevel,sign);
 				}
+			if (currentlevel + 1 != nOflevels&&currentlevel>0&&currentlevel+1<2*nOflevels) {
+				level += "\n";
+			}
+
+			
 			break;
 		}
 //current-aktualny(idzie od 0), nOflevels-liczba poziomow(od uzytkownika)
@@ -48,15 +65,19 @@ public class TreeCreator {
 			level += add(nOflevels - currentlevel-1, " ");
 			level += add(currentlevel + 1, sign);
 			}
-			if(currentlevel==nOflevels)
+			if(currentlevel==nOflevels&&nOflevels>1)
 				{
 				level+="\n";}
-			if(currentlevel>=nOflevels){
+			if(currentlevel>=nOflevels&&currentlevel<2*nOflevels-1){
 			
 				level+= add(currentlevel-nOflevels+1," ");
 				level+= add(2*nOflevels-currentlevel-1,sign);
-				//level+= add(nOflevels-currentlevel+3, sign);
 			 }
+			
+			if (currentlevel + 1 != nOflevels&&currentlevel+1<2*nOflevels-1) {
+				level += "\n";
+			}
+			
 			break;
 		}
 		
@@ -66,10 +87,7 @@ public class TreeCreator {
 		}
 		
 
-		if (currentlevel + 1 != nOflevels) {
-			level += "\n";
-		}
-
+		
 		return level;
 	}
 
